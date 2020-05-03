@@ -64,7 +64,15 @@ var createSlideshow = function () {
                 // TOGGLE PLAY 'FLAG'
                 play = !play;
             };
-        }
+        },
+        //set the speed of the carousel
+        setSpeed : function () {
+            let newSpeed = parseFloat(prompt('Please enter the speed at which you would like the photos to be shown in milliseconds:'));
+                speed = parseFloat(newSpeed);
+                stopSlideShow();
+                timer = setInterval(displayNextImage, speed);
+                console.log(speed);
+            }
     };
 };
 
@@ -89,4 +97,5 @@ window.addEventListener("load", function () {
     slideshow.loadImages(slides).startSlideShow($("image"), $("caption"));
     // PAUSE THE SLIDESHOW
     $("play_pause").onclick = slideshow.createToggleHandler();
+    $("speed").onclick = slideshow.setSpeed;
 });
